@@ -8,27 +8,27 @@ interface Fruit {
 const suggestions: Fruit[] = [
   {
     name: 'Apple',
-    image: 'https://fruitsquare.in/uploads/media/2024/Fruit-Square-logo1.PNG',
+    image: 'https://x.igo1.PNG',
   },
   {
     name: 'Banana',
-    image: 'https://fruitsquare.in/uploads/media/2024/Fruit-Square-logo1.PNG',
+    image: 'https://x.logo1.PNG',
   },
   {
     name: 'Orange',
-    image: 'https://fruitsquare.in/uploads/media/2024/Fruit-Square-logo1.PNG',
+    image: 'https://x.in/e-logo1.PNG',
   },
   {
     name: 'Mango',
-    image: 'https://fruitsquare.in/uploads/media/2024/Fruit-Square-logo1.PNG',
+    image: 'https://logo1.PNG',
   },
   {
     name: 'Grapes',
-    image: 'https://fruitsquare.in/uploads/media/2024/Fruit-Square-logo1.PNG',
+    image: 'https://fre-logo1.PNG',
   },
   {
     name: 'Pineapple',
-    image: 'https://fruitsquare.in/uploads/media/2024/Fruit-Square-logo1.PNG',
+    image: 'https://logo1.PNG',
   },
 ];
 
