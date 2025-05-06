@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent, FocusEvent, FC } from 'react';
 
+// Define fruit type
 interface Fruit {
   name: string;
   image: string;
@@ -8,31 +9,31 @@ interface Fruit {
 const suggestions: Fruit[] = [
   {
     name: 'Apple',
-    image: 'https://x.igo1.PNG',
+    image: 'https://via.placeholder.com/20/FF0000/FFFFFF?text=A',
   },
   {
     name: 'Banana',
-    image: 'https://x.logo1.PNG',
+    image: 'https://via.placeholder.com/20/FFFF00/000000?text=B',
   },
   {
     name: 'Orange',
-    image: 'https://x.in/e-logo1.PNG',
+    image: 'https://via.placeholder.com/20/FFA500/FFFFFF?text=O',
   },
   {
     name: 'Mango',
-    image: 'https://logo1.PNG',
+    image: 'https://via.placeholder.com/20/FFD700/000000?text=M',
   },
   {
     name: 'Grapes',
-    image: 'https://fre-logo1.PNG',
+    image: 'https://via.placeholder.com/20/800080/FFFFFF?text=G',
   },
   {
     name: 'Pineapple',
-    image: 'https://logo1.PNG',
+    image: 'https://via.placeholder.com/20/DAA520/000000?text=P',
   },
 ];
 
-export const SearchDropdown: FC = () => {
+const FruitSelector: FC = () => {
   const [input, setInput] = useState<string>('');
   const [selectedFruit, setSelectedFruit] = useState<Fruit | null>(null);
   const [focused, setFocused] = useState(false);
@@ -63,9 +64,13 @@ export const SearchDropdown: FC = () => {
     setShowDropdown(false);
   };
 
-  const filteredSuggestions = suggestions
-    .filter((f) => f.name.toLowerCase().includes(input.toLowerCase())) // Filter based on search input
-    .slice(0, 2);
+  // Filter suggestions based on input
+  const filteredSuggestions = suggestions.filter((f) =>
+    f.name.toLowerCase().includes(input.toLowerCase())
+  );
+
+  // Limit to the first 2 results
+  const limitedSuggestions = filteredSuggestions.slice(0, 2);
 
   const isActive = focused || input.length > 0 || selectedFruit !== null;
   const borderColor = focused || showDropdown ? '#1976d2' : '#ccc';
@@ -81,20 +86,19 @@ export const SearchDropdown: FC = () => {
         style={{
           position: 'relative',
           border: `1px solid ${borderColor}`,
+          borderBottom: showDropdown ? 'none' : `1px solid ${borderColor}`, // Hide bottom border when dropdown is visible
           borderRadius: `4px 4px ${showDropdown ? '0' : '4px'} ${
             showDropdown ? '0' : '4px'
-          }`,
-          borderBottom: showDropdown ? 'none' : `1px solid ${borderColor}`,
+          }`, // Remove bottom radius when dropdown is visible
           padding: '20px 12px 6px 12px',
           boxSizing: 'border-box',
           backgroundColor: '#fff',
         }}
       >
-        {/* Floating label with optional image */}
         <label
           style={{
             position: 'absolute',
-            top: isActive ? -8 : '50%',
+            top: isActive ? 6 : '50%',
             left: 12,
             fontSize: isActive ? 12 : 16,
             color: isActive ? '#1976d2' : '#aaa',
@@ -110,7 +114,6 @@ export const SearchDropdown: FC = () => {
           Select fruit
         </label>
 
-        {/* Text input */}
         <input
           type="text"
           value={input}
@@ -123,8 +126,7 @@ export const SearchDropdown: FC = () => {
             border: 'none',
             outline: 'none',
             backgroundColor: 'transparent',
-            marginTop: isActive ? 0 : 0,
-            marginBottom: 8,
+            marginTop: isActive ? 8 : 0,
             paddingLeft: selectedFruit ? '32px' : '12px', // Adjust padding for image space
           }}
         />
@@ -135,18 +137,17 @@ export const SearchDropdown: FC = () => {
             style={{
               position: 'absolute',
               left: 12,
-              top: '55%',
-              transform: 'translateY(-50%)', // Center the icon vertically
+              top: '50%',
+              transform: 'translateY(-50%)',
               width: 20,
               height: 20,
-              verticalAlign: 'middle', // Ensure the image aligns properly with text
+              verticalAlign: 'middle',
             }}
           />
         )}
       </div>
 
-      {/* Dropdown suggestions */}
-      {showDropdown && filteredSuggestions.length > 0 && (
+      {showDropdown && limitedSuggestions.length > 0 && (
         <ul
           style={{
             position: 'absolute',
@@ -166,7 +167,7 @@ export const SearchDropdown: FC = () => {
             zIndex: 1,
           }}
         >
-          {filteredSuggestions.map((fruit, index) => (
+          {limitedSuggestions.map((fruit, index) => (
             <li
               key={fruit.name}
               onMouseDown={(e) => {
@@ -196,3 +197,5 @@ export const SearchDropdown: FC = () => {
     </div>
   );
 };
+
+export default FruitSelector;

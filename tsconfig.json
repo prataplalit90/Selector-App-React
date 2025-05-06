@@ -1,16 +1,7 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "declaration": true,
-    "emitDeclarationOnly": false,
-    "jsx": "react-jsx",
-    "outDir": "dist",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "moduleResolution": "node",
-    "noImplicitAny": false
-  },
-  "include": ["src"]
+  "files": [],
+  "references": [
+    { "path": "./packages/fruit-selector" },
+    { "path": "./packages/example-app" }
+  ]
 }
